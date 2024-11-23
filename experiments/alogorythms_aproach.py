@@ -3,7 +3,7 @@ import pandas as pd
 class GrantStartupMatcher:
     def __init__(self):
         pass
-
+    #govnocod для тестов
     def calculate_score(self, grant, startup):
         score = 0
         if grant['Сфера интересов'] == startup['Индустрия']:
