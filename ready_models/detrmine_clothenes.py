@@ -1,3 +1,5 @@
+from sentence_transformers import SentenceTransformer, util
+
 def find_top_grants_for_startup(startup, grants):
     """
     This function finds the top 5 grants that are most similar to a given startup based on their descriptions.
