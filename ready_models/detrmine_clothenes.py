@@ -1,6 +1,9 @@
 from sentence_transformers import SentenceTransformer, util
 
-def find_top_grants_for_startup(startup, grants):
+
+grant_embeddings = model.encode([grant['description'] for grant in grants], convert_to_tensor=True)
+
+def find_top_grants_for_startup(startup, grant_embeddings):
     """
     This function finds the top 5 grants that are most similar to a given startup based on their descriptions.
     It uses the SentenceTransformer model to generate embeddings for both the startup and grants,
@@ -17,7 +20,6 @@ def find_top_grants_for_startup(startup, grants):
 
     startup_embedding = model.encode(startup['Описание'], convert_to_tensor=True)
 
-    grant_embeddings = model.encode([grant['description'] for grant in grants], convert_to_tensor=True)
 
     similarities = util.pytorch_cos_sim(startup_embedding, grant_embeddings).squeeze()
 
